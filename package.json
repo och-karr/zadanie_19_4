@@ -1,0 +1,18 @@
+{
+  "name": "zadanie_19_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "actions.js",
+  "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+  },
+  "devDependencies": {
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
