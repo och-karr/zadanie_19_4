@@ -12,33 +12,51 @@ function comments(state = [], action) {
                 text: action.text,
                 votes: 0
             }
-            , ...state.comments];   
+            , ...state.comments];  //tablica komentarzy 
 
         case REMOVE_COMMENT:
             return [{
-                comments: state.comments.filter(comment => comment.id !== action.id)
+                comments: state.comments.filter(comment => comment.id !== action.id) //comments: (tabl comments przyjmuje od nowa)
             }];
         
         case EDIT_COMMENT:
+            var newArr = state.comments.map((comment)=>{
+                if(comment.id !== action.id){
+                    return comment;
+                } else {
+                    comment.text = action.text;
+                    return comment;
+                }
+            })
             return [{
-                id: state.comments.filter(comment => comment.id !== action.id),
-                text: action.text
-            }
-            , ...state.comments];
+                comments: newArr
+            }];
         
         case THUMB_UP_COMMENT:
-            return [{
-                    id: state.comments.filter(comment => comment.id !== action.id),
-                    votes: votes+1
+            var newArr = state.comments.map((comment)=>{
+                if(comment.id !== action.id){
+                    return comment;
+                } else {
+                    comment.votes = comment.votes+1;
+                    return comment;
                 }
-                , ...state.comments]
+            })
+            return [{
+                comments: newArr
+            }];
         
         case THUMB_DOWN_COMMENT:
-            return [{
-                    id: state.comments.filter(comment => comment.id !== action.id),
-                    votes: votes-1
+            var newArr = state.comments.map((comment)=>{
+                if(comment.id !== action.id){
+                    return comment;
+                } else {
+                    comment.votes = comment.votes-1;
+                    return comment;
                 }
-                , ...state.comments]
+            })
+            return [{
+                comments: newArr
+            }];
 
         default:
             return state;
